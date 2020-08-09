@@ -1,14 +1,15 @@
 package amaralus.apps.entitymanipulator.commands;
 
-public class MultilineSoutCommand implements InCommand {
+public class MultilineSoutCommand implements Command {
 
     @Override
-    public void execute(ExecutionResult executionResult) {
-        execute(executionResult.getResult());
+    public Object execute(Object object) {
+        object.toString().lines().forEach(System.out::println);
+        return null;
     }
 
     @Override
-    public void execute(Object object) {
-        object.toString().lines().forEach(System.out::println);
+    public String toString() {
+        return ">> sout";
     }
 }

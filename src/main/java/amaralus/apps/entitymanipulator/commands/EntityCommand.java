@@ -2,7 +2,7 @@ package amaralus.apps.entitymanipulator.commands;
 
 import amaralus.apps.entitymanipulator.source.EntitiesSource;
 
-public class EntityCommand implements OutCommand {
+public class EntityCommand implements Command {
 
     private final String entityName;
     private final EntitiesSource<?> entitiesSource;
@@ -13,7 +13,7 @@ public class EntityCommand implements OutCommand {
     }
 
     @Override
-    public ExecutionResult execute() {
+    public Object execute(Object object) {
         String[] subNames = entityName.split("\\.");
         Object entity = null;
 
@@ -24,9 +24,9 @@ public class EntityCommand implements OutCommand {
         }
 
         if (entity != null)
-            return new ExecutionResult(entity, true);
+            return entity;
         else
-            return new ExecutionResult("entity [" + entityName + "] not found", false);
+            throw new CommandExecutionException("entity [" + entityName + "] not found");
     }
 
     private Object getEntityPropertyValue(Object entity, String propertyName) {
@@ -41,5 +41,10 @@ public class EntityCommand implements OutCommand {
 
     public String getEntityName() {
         return entityName;
+    }
+
+    @Override
+    public String toString() {
+        return "entity " + entityName;
     }
 }
