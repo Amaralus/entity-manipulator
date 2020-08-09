@@ -1,4 +1,4 @@
-package amaralus.apps.entitymanipulator;
+package amaralus.apps.entitymanipulator.source;
 
 import java.util.Map;
 
