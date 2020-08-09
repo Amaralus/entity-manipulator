@@ -2,7 +2,7 @@ package amaralus.apps.entitymanipulator.commands;
 
 import amaralus.apps.entitymanipulator.source.EntitiesSource;
 
-public class EntityCommand {
+public class EntityCommand implements OutCommand {
 
     private final String entityName;
     private final EntitiesSource<?> entitiesSource;
@@ -12,6 +12,7 @@ public class EntityCommand {
         this.entitiesSource = entitiesSource;
     }
 
+    @Override
     public ExecutionResult execute() {
         var entity = entitiesSource.get(entityName);
         if (entity != null)
