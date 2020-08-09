@@ -29,7 +29,7 @@ public class CommandProcessor {
                 var entityCommand = new EntityCommand(args.get(1), entitiesSource);
                 defaultLogCommand.execute(entityCommand.execute());
             } else
-                defaultLogCommand.execute("wrong command \"" + args.get(0) + "\"");
+                defaultLogCommand.execute("wrong command [" + args.get(0) + "]");
         });
     }
 
